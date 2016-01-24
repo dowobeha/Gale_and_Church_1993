@@ -3,7 +3,8 @@
 The accompanying program `align_regions.c` was originally published in the Appendix of [Gale & Church (1993)](http://aclweb.org/anthology/J/J93/J93-1004.pdf) in the journal Computational Linguistics, Volume 19, Number 1, March 1993.
 
 A small number of very minor changes have been made to the program in order to enable compilation using modern C compilers:
-* Two include statements were changed, replacing deprecated headers with their modern equivalents.* The original program also included code where a struct was passed as a parameter to a function where the function required a pointer to a struct; such code has been changed to explicitly take the address of the relevant struct object.
+* Two include statements were changed, replacing deprecated headers with their modern equivalents.
+* The original program also included code where a struct was passed as a parameter to a function where the function required a pointer to a struct; such code has been changed to explicitly take the address of the relevant struct object.
 * Whitespace has been altered in some places to improve readability.
 
 This repository also includes two small sample text files and a Makefile, demonstrating how to compile and run the program. The code was transcribed from the Appendix by Lane Schwartz.
