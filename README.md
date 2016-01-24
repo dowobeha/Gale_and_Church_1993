@@ -10,7 +10,7 @@ A small number of very minor changes have been made to the program in order to e
 This repository also includes two small sample text files and a Makefile, demonstrating how to compile and run the program. The code was transcribed from the Appendix by Lane Schwartz.
 
 
-The code was written by William A. Gale and Kenneth W. Church, with Michael D. Riley, and was presented with the following note:
+The code was written by [William A. Gale](https://linguistlist.org/issues/13/13-2047.html) and [Kenneth W. Church](http://researcher.watson.ibm.com/researcher/view.php?person=us-kwchurch), with [Michael D. Riley](http://research.google.com/pubs/author125.html), and was presented with the following note:
 
 > The following code is the core of align. It is a C language program that inputs two 
 > text files, with one token (word) per line. The text files contain a number of delimiter
