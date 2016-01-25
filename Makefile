@@ -1,6 +1,6 @@
 
 all: file1.al file2.al
-	cat file2.al file2.al
+	cat file1.al file2.al
 
 file1.al file2.al: align_regions file1 file2
 	./align_regions -D '.PARA' -d '.End of Sentence' -v file1 file2
