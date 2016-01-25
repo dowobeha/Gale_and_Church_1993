@@ -20,7 +20,7 @@
 
 #define dist(x,y) distances[(x) * ((ny) + 1) + (y)]
 #define pathx(x,y) path_x[(x) * ((ny) + 1) + (y)]
-#define pathy(x,y) path_x[(x) * ((ny) + 1) + (y)]
+#define pathy(x,y) path_y[(x) * ((ny) + 1) + (y)]
 #define MAX_FILENAME 256
 #define BIG_DISTANCE 2500
 
