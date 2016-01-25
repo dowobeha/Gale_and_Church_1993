@@ -1,0 +1,33 @@
+From: Kenneth W Church <kwchurch@us.ibm.com>
+Subject: Re: Code for Gale & Church (1993)
+Date: 25 January 2016 at 7:25:42 AM CST
+To: "Schwartz, Lane Oscar Bingaman" <lanes@illinois.edu>
+
+that fine
+
+good luck with your current position!
+
+
+
+
+From: "Schwartz, Lane Oscar Bingaman" <lanes@illinois.edu>
+To: Kenneth W Church/Watson/IBM@IBMUS
+Date: 01/24/2016 01:35 PM
+Subject: Code for Gale & Church (1993)
+
+Ken, 
+
+You may or may not remember me - I visited JHU as a Ph.D student for the first SCALE workshop, and we briefly interacted there (I was working with Chris Callison-Burch on the Joshua machine translation system). I’m now an assistant professor in the Linguistics Department at the University of Illinois at Urbana-Champaign.
+
+Regardless, I wanted to let you know that I finally took the time to type up your code from the appendix of Gale & Church (1993) and put it up on github. I’m a big believer in open source software, and I’ve always admired that you put the code for the sentence aligner right there in the paper. I made a couple of very minor modifications to get the code to compile on a modern C compiler.
+
+I know that numerous other implementations of your algorithm exist, but I thought that there should be a copy of your original code in electronic form for those who wish to use the original implementation. I hope that’s OK with you.
+
+https://github.com/dowobeha/Gale_and_Church_1993
+
+Cheers,
+Lane Schwartz
+
+
+
+
