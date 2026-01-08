@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <limits.h>
 #include <sys/stat.h>
+#include <unistd.h>    /* Added to explicitly provide getopt function */
 
 /*
   usage:

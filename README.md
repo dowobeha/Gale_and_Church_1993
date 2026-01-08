@@ -4,6 +4,7 @@ The accompanying program `align_regions.c` was originally published in the Appen
 
 A small number of very minor changes have been made to the program in order to enable compilation using modern C compilers:
 * Two include statements were changed, replacing deprecated headers with their modern equivalents.
+* One include statement ("unistd.h") was added; the original code assumed that the getopt function would be provided by the compiler, which is no longer necessarily the case.
 * The original program also included code where a struct was passed as a parameter to a function where the function required a pointer to a struct; such code has been changed to explicitly take the address of the relevant struct object.
 * Whitespace has been altered in some places to improve readability.
 
