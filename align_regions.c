@@ -39,8 +39,11 @@ char *soft_delimiter = NULL;    /* -d arg */
 int verbose = 0;                /* -v arg */
 
 /* utility functions */
-char *readchars(), **readlines(), **substrings();
-void err();
+char *readchars(char *filename, int *len_ptr);
+char **readlines(char *filename, int *len_ptr);
+char **substrings(char *string, char *end, char delimiter, int *len_ptr);
+void err(char *msg);
+
 
 /*
   seq_align by Mike Riley
@@ -67,11 +70,10 @@ void err();
   The function returns the length fo the alignment.
 */
 int
-seq_align(x, y, nx, ny, dist_funct, align)
-     int *x, *y, nx, ny;
-     int (*dist_funct)();
-     struct alignment **align;
-{
+seq_align(int *x, int *y, int nx, int ny,
+          int (*dist_funct)(int x1, int y1, int x2, int y2),
+          struct alignment **align)
+ {
   int *distances, *path_x, *path_y, n;
   int i, j, oi, oj, di, dj, d1, d2, d3, d4, d5, d6, dmin;
   struct alignment *ralign;
@@ -221,8 +223,7 @@ seq_align(x, y, nx, ny, dist_funct, align)
 /* Returns the area under a normal distribution
    from -inf to z standard deviations */
 double
-pnorm(z)
-     double z;
+pnorm(double z)
 {
   double t, pd;
   t = 1/(1 + 0.2316419 * z);
@@ -240,8 +241,7 @@ pnorm(z)
    number of foreign characters per English character.
 */
 int
-match(len1, len2)
-     int len1, len2;
+match(int len1, int len2)
 {
   double z, pd, mean;
   double c = 1;
@@ -260,8 +260,7 @@ match(len1, len2)
 }
 
 int
-two_side_distance(x1, y1, x2, y2)
-     int x1, y1, x2, y2;
+two_side_distance(int x1, int y1, int x2, int y2)
 {
   int penalty21 = 230;  /* -100 * log([prob of 2-1 match] / [prob of 1-1 match]) */
   int penalty22 = 440;  /* -100 * log([prob of 2-2 match] / [prob of 1-1 match]) */
@@ -295,10 +294,7 @@ struct region{
 };
 
 void
-print_region(fd, region, score)
-     int score;
-     FILE *fd;
-     struct region *region;
+print_region(FILE *fd, struct region *region, int score)
 {
   char **lines, **end;
 
@@ -309,8 +305,7 @@ print_region(fd, region, score)
 }
 
 int
-length_of_a_region(region)
-     struct region *region;
+length_of_a_region(struct region *region)
 {
   int result;
   char **lines, **end;
@@ -325,9 +320,7 @@ length_of_a_region(region)
 }
 
 int *
-region_lengths(regions, n)
-     struct region *regions;
-     int n;
+region_lengths(struct region *regions, int n)
 {
   int i;
   int *result;
@@ -341,10 +334,7 @@ region_lengths(regions, n)
 }
 
 struct region *
-find_sub_regions(region, delimiter, len_ptr)
-     struct region *region;
-     char *delimiter;
-     int *len_ptr;
+find_sub_regions(struct region *region, char *delimiter, int *len_ptr)
 {
   struct region *result;
   char **l, **lines, **end;
@@ -378,9 +368,7 @@ find_sub_regions(region, delimiter, len_ptr)
 /* Top Level Main Function */
 
 int
-main(argc, argv)
-int argc;
-char **argv;
+main(int argc, char **argv)
 {
 
   char **lines1, **lines2;
@@ -493,8 +481,7 @@ char **argv;
 /* Utility Functions */
 
 void
-err(msg)
-     char *msg;
+err(char *msg)
 {
   fprintf(stderr, "**ERROR**: %s\n", msg);
   exit(2);
@@ -503,9 +490,7 @@ err(msg)
 /* return the contents of the file as a string
    and stuff the length of this string into len_ptr */
 char *
-readchars(filename, len_ptr)
-     char *filename;
-     int *len_ptr;
+readchars(char *filename, int *len_ptr)
 {
   FILE *fd;
   char *result;
@@ -532,9 +517,7 @@ readchars(filename, len_ptr)
    return an array of substrings
    stuff the length of this array into len_ptr */
 char **
-substrings(string, end, delimiter, len_ptr)
-     char *string, *end, delimiter;
-     int *len_ptr;
+substrings(char *string, char *end, char delimiter, int *len_ptr)
 {
   char *s, **result;
   int i = 0;
@@ -565,9 +548,7 @@ substrings(string, end, delimiter, len_ptr)
 /* return an array of strings, one string for each line of the file
    set len_ptr to the number of lines in the file */
 char **
-readlines(filename, len_ptr)
-     char *filename;
-     int *len_ptr;
+readlines(char *filename, int *len_ptr)
 {
   char *chars;
   int number_of_chars;

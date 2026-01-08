@@ -8,6 +8,9 @@ A small number of very minor changes have been made to the program in order to e
 * The original program also included code where a struct was passed as a parameter to a function where the function required a pointer to a struct; such code has been changed to explicitly take the address of the relevant struct object.
 * Whitespace has been altered in some places to improve readability.
 
+In order to enable the code to compile under C23 and later, the following changes have also been made:
+* K&R [old-style function definitions](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Old_002dStyle-Function-Definitions.html) have been refactored to use the [function parameter variable](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Function-Parameter-Variables.html) declaration style that has been required since C89, and which is now enforced as of C23.
+
 This repository also includes two small sample text files and a Makefile, demonstrating how to compile and run the program. The code was transcribed from the Appendix by Lane Schwartz.
 
 
